@@ -10,7 +10,7 @@ use XML::Simple;
 my $facil = 0x00010003;
 my ($msisdn,$soapmessage,$message,@dest_addrs);
 
-@dest_addrs =('2547xxxxxxxx');
+@dest_addrs =('xxxxxxxxxxx');
 $message=$ARGV[0];
 
 #print "$ARGV[0]\n";
