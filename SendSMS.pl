@@ -10,8 +10,8 @@ use XML::Simple;
 my $facil = 0x00010003;
 my ($msisdn,$soapmessage,$message,@dest_addrs);
 
-@dest_addrs =('2547xxxxxxxx');
-$message=$ARGV[0];
+@dest_addrs =('254722987561');
+$message="Testing";
 
 #print "$ARGV[0]\n";
 
@@ -38,9 +38,9 @@ ns2="http://www.safaricomoss.net/webTransmitter/schemas" xmlns:ns3="http://www.s
 afaricomoss.net/webTransmitter/schemas" xmlns:ns4="http://www.safaricomoss.net/w
 ebTransmitter/schemas" xmlns:ns5="http://www.safaricomoss.net/webTransmitter/sch
 emas">
-            <ns1:systemID>XXX</ns1:systemID>
+            <ns1:systemID>Oper</ns1:systemID>
             <ns2:method>submitSM</ns2:method>
-            <ns3:originatingMSISDN>XXX</ns3:originatingMSISDN>
+            <ns3:originatingMSISDN>SPLUNK</ns3:originatingMSISDN>
             <ns4:destinationMSISDN>'.$msisdn.'</ns4:destinationMSISDN>
             <ns5:textMessage>'.$message.'</ns5:textMessage>
         </ns0:webTransmitter>
@@ -51,7 +51,7 @@ emas">
         #print "sent message:".$soapmessage."\n";
 
         my $userAgent = LWP::UserAgent->new();
-        my $request = HTTP::Request->new(POST => 'http://localhost:8080/WebTransmitter/WebTransmitter?wsdl');
+        my $request = HTTP::Request->new(POST => 'http://172.29.229.186:8080/WebTransmitter/WebTransmitter?wsdl');
         $request->header(SOAPAction => '');
         $request->content($soapmessage);
         $request->content_type("text/xml; charset=utf-8");
